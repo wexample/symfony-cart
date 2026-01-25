@@ -3,7 +3,7 @@
   "description": "Cart helper for Symfony",
   "type": "library",
   "license": "MIT",
-  "version": "1.0.71",
+  "version": "1.0.72",
   "autoload": {
     "psr-4": {
       "Wexample\\SymfonyCart\\": "src/"
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "wexample/symfony-helpers": "1.0.84",
-    "wexample/symfony-money": "1.0.72"
+    "wexample/symfony-helpers": "1.0.85",
+    "wexample/symfony-money": "1.0.73"
   }
 }
