@@ -1,6 +1,6 @@
 # wexample/symfony-cart
 
-Version: 1.0.79
+Version: 1.0.80
 
 Cart helper for Symfony
 
