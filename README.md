@@ -1,6 +1,6 @@
 # symfony_cart
 
-Version: 1.0.81
+Version: 1.0.82
 
 Cart helper for Symfony
 
@@ -27,7 +27,7 @@ Visit the [Wexample Suite documentation](https://docs.wexample.com) for the comp
 
 ## Dependencies
 
-- wexample/symfony-helpers: >=1.0.93
+- wexample/symfony-helpers: >=2.0.0
 - wexample/symfony-money: *
 
 ## Versioning & Compatibility Policy
