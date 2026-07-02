@@ -1,6 +1,6 @@
 # symfony_cart
 
-Version: 1.0.83
+Version: 1.0.84
 
 Cart helper for Symfony
 
