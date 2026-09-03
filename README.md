@@ -1,8 +1,8 @@
 # symfony_cart
 
-Version: 1.0.91
+Version: 1.0.92
 
-Cart helper for Symfony
+The repository does not provide any concrete code that could be documented for now.
 
 ## Table of Contents
 
@@ -12,6 +12,8 @@ Cart helper for Symfony
 - [License](#license)
 - [About us](#about-us)
 - [Migration Notes](#migration-notes)
+
+The repository does not provide any concrete code that could be documented for now.
 
 ## Integration in the Suite
 
@@ -25,7 +27,7 @@ Visit the [Wexample Suite documentation](https://docs.wexample.com) for the comp
 
 ## Dependencies
 
-- wexample/symfony-helpers: >=6.0.0
+- wexample/symfony-helpers: >=7.0.0
 - wexample/symfony-money: >=3.0.0
 
 ## Versioning & Compatibility Policy
