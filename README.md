@@ -1,6 +1,6 @@
 # symfony_cart
 
-Version: 1.0.95
+Version: 1.0.96
 
 The repository does not provide any concrete code that could be documented for now.
 
