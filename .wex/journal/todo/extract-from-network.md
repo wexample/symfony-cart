@@ -4,6 +4,10 @@ Opened: 2026-09-24
 Updated: 2026-09-24
 Author: agent:archeology
 
+## Status (2026-10-04)
+
+Done (phases A and B): Product, ProductVariation, Schedule, ProductAvailability, StockReservation, Cart, CartItem; CartService (owner attach, limits fixed, price resolvers), CartCheckoutService (checkout through symfony-payment, completion, CartPaidEvent and per-type paid handlers, reopen, cancel, expire), StockService (locked reservations, never deletes availabilities), `cart:expire`, sales per product; 11 tests. Left: admin forms for variations and availabilities (#301), recurring schedules, the tunnel scenario as an integration test.
+
 ## Read this first — status of this todo
 
 > **This is a proposal for discussion, not an order to code.** It was written by the 2026-09 network archaeology pass. Read it, then discuss it with the owner: every design choice and recommendation below is to be challenged and validated **before** any code is written. Do not start implementing on your own.

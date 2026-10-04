@@ -1,12 +1,17 @@
 {
   "name": "wexample/symfony-cart",
-  "description": "Cart helper for Symfony",
+  "description": "Cart and catalog for Symfony: price snapshots, variations, schedules, stock reservation, checkout through symfony-payment",
   "type": "library",
   "license": "MIT",
   "version": "1.0.96",
   "autoload": {
     "psr-4": {
       "Wexample\\SymfonyCart\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Wexample\\SymfonyCart\\Tests\\": "tests/"
     }
   },
   "authors": [
@@ -16,6 +21,28 @@
     }
   ],
   "require": {
-    "php": ">=8.5"
+    "php": ">=8.5",
+    "wexample/symfony-helpers": ">=12.0.0",
+    "wexample/symfony-money": ">=4.0.0",
+    "wexample/symfony-geo": ">=3.0.0",
+    "wexample/symfony-payment": ">=1.0.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "*",
+    "wexample/symfony-testing": ">=2.0.0"
+  },
+  "repositories": [
+    {
+      "type": "path",
+      "url": "../*",
+      "options": {
+        "symlink": true
+      }
+    }
+  ],
+  "extra": {
+    "install": {
+      "bundle_env": "all"
+    }
   }
 }

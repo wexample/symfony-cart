@@ -1,0 +1,21 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Wexample\SymfonyCart\:
+        resource: '../../{Command,EventSubscriber,Repository,Service}'
+
+    Wexample\SymfonyCart\Service\CartService:
+        public: true
+        arguments:
+            $priceResolvers: !tagged_iterator wexample_symfony_cart.price_resolver
+
+    Wexample\SymfonyCart\Service\CartCheckoutService:
+        public: true
+        arguments:
+            $paidHandlers: !tagged_iterator wexample_symfony_cart.paid_handler
+
+    Wexample\SymfonyCart\Service\StockService:
+        public: true

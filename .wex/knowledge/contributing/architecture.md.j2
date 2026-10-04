@@ -1,1 +1,5 @@
-The repository does not provide any concrete code that could be documented for now.
+## Architecture
+
+{{ path("src/Entity/Cart.php") }} and {{ path("src/Entity/CartItem.php") }} use the symfony-money priced traits; an item keeps the product's price in `priceBase` and derives its effective prices from its variations. {{ path("src/Entity/ProductAvailability.php") }} rows are never deleted: what is left is the quantity minus confirmed and unexpired reservations ({{ path("src/Entity/StockReservation.php") }}). {{ path("src/Service/StockService.php") }} reserves inside a transaction with the availability row locked, and checks everything before persisting anything, so a refused reservation leaves the entity manager usable.
+
+{{ path("src/EventSubscriber/CartPaymentSubscriber.php") }} is the only link with payments: the cart is a `PayableInterface`, the payment knows it by type and id, and a payment replaced by another never reopens the cart.
