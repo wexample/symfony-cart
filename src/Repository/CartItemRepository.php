@@ -2,8 +2,8 @@
 
 namespace Wexample\SymfonyCart\Repository;
 
-use Symfony\Bridge\Doctrine\Types\UuidType;
 use DateTimeImmutable;
+use Symfony\Bridge\Doctrine\Types\UuidType;
 use Wexample\SymfonyCart\Entity\CartItem;
 use Wexample\SymfonyCart\Entity\Product;
 use Wexample\SymfonyCart\Enum\CartStatus;

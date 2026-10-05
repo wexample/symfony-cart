@@ -4,7 +4,6 @@ namespace Wexample\SymfonyCart\Tests\Integration;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
-use Wexample\SymfonyCart\Entity\CartItem;
 use Wexample\SymfonyCart\Entity\ProductAvailability;
 use Wexample\SymfonyCart\Entity\Schedule;
 use Wexample\SymfonyCart\Enum\CartStatus;
