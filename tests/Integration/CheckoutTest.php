@@ -4,6 +4,7 @@ namespace Wexample\SymfonyCart\Tests\Integration;
 
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use Wexample\SymfonyCart\Entity\CartAddress;
 use Wexample\SymfonyCart\Entity\ProductAvailability;
 use Wexample\SymfonyCart\Entity\Schedule;
 use Wexample\SymfonyCart\Enum\CartStatus;
@@ -14,7 +15,6 @@ use Wexample\SymfonyCart\Exception\OutOfStockException;
 use Wexample\SymfonyCart\Repository\CartItemRepository;
 use Wexample\SymfonyCart\Tests\Fixtures\Handler\CartEventRecorder;
 use Wexample\SymfonyCart\Tests\Fixtures\Handler\RecordingPaidHandler;
-use Wexample\SymfonyCart\Entity\CartAddress;
 use Wexample\SymfonyGeo\Entity\Country;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 
