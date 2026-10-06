@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Wexample\SymfonyCart\Enum\CartStatus;
 use Wexample\SymfonyCart\Exception\CartNotEditableException;
 use Wexample\SymfonyCart\Repository\CartRepository;
-use Wexample\SymfonyGeo\Class\PostalAddress;
 use Wexample\SymfonyHelpers\Entity\AbstractEntity;
 use Wexample\SymfonyMoney\Entity\Traits\HasPriceCurrencyTrait;
 use Wexample\SymfonyMoney\Entity\Traits\HasPriceDiscountTrait;
@@ -59,11 +58,13 @@ class Cart extends AbstractEntity implements PricedParentInterface, DiscountedIn
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     protected ?Payment $payment = null;
 
-    #[ORM\Column(type: Types::JSON, nullable: true)]
-    protected ?array $billingAddress = null;
+    #[ORM\ManyToOne(targetEntity: CartAddress::class, cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    protected ?CartAddress $billingAddress = null;
 
-    #[ORM\Column(type: Types::JSON, nullable: true)]
-    protected ?array $shippingAddress = null;
+    #[ORM\ManyToOne(targetEntity: CartAddress::class, cascade: ['persist'])]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    protected ?CartAddress $shippingAddress = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
     protected DateTimeImmutable $dateCreated;
@@ -240,26 +241,26 @@ class Cart extends AbstractEntity implements PricedParentInterface, DiscountedIn
         return $this;
     }
 
-    public function getBillingAddress(): ?PostalAddress
+    public function getBillingAddress(): ?CartAddress
     {
-        return null === $this->billingAddress ? null : PostalAddress::fromArray($this->billingAddress);
+        return $this->billingAddress;
     }
 
-    public function setBillingAddress(?PostalAddress $address): static
+    public function setBillingAddress(?CartAddress $address): static
     {
-        $this->billingAddress = $address?->toArray();
+        $this->billingAddress = $address;
 
         return $this;
     }
 
-    public function getShippingAddress(): ?PostalAddress
+    public function getShippingAddress(): ?CartAddress
     {
-        return null === $this->shippingAddress ? null : PostalAddress::fromArray($this->shippingAddress);
+        return $this->shippingAddress;
     }
 
-    public function setShippingAddress(?PostalAddress $address): static
+    public function setShippingAddress(?CartAddress $address): static
     {
-        $this->shippingAddress = $address?->toArray();
+        $this->shippingAddress = $address;
 
         return $this;
     }

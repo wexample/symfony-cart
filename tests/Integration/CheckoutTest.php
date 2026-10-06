@@ -14,7 +14,8 @@ use Wexample\SymfonyCart\Exception\OutOfStockException;
 use Wexample\SymfonyCart\Repository\CartItemRepository;
 use Wexample\SymfonyCart\Tests\Fixtures\Handler\CartEventRecorder;
 use Wexample\SymfonyCart\Tests\Fixtures\Handler\RecordingPaidHandler;
-use Wexample\SymfonyGeo\Class\PostalAddress;
+use Wexample\SymfonyCart\Entity\CartAddress;
+use Wexample\SymfonyGeo\Entity\Country;
 use Wexample\SymfonyPayment\Enum\PaymentStatus;
 
 class CheckoutTest extends AbstractCartTestCase
@@ -30,11 +31,14 @@ class CheckoutTest extends AbstractCartTestCase
         $cart = $this->carts()->create('user-1');
         $this->carts()->addProduct($cart, $membership);
 
-        $initiation = $this->checkout()->checkout($cart, 'card', new PostalAddress('Rue Neuve 1', '1000', 'Bruxelles', 'BE'));
+        $belgium = (new Country())->setIsoAlpha2Code('BE')->setIsoAlpha3Code('BEL')->setIsoNumericCode('056')->setName('Belgium');
+        $this->em()->persist($belgium);
+        $address = (new CartAddress())->setPostalAddress('Rue Neuve 1')->setPostCode('1000')->setCity('Bruxelles')->setCountry($belgium);
+        $initiation = $this->checkout()->checkout($cart, 'card', $address);
 
         $this->assertSame(CartStatus::WaitingPayment, $cart->getStatus());
         $this->assertSame(3000, $this->provider()->requests[0]->amount);
-        $this->assertSame('BE', $cart->getBillingAddress()->getCountryCode());
+        $this->assertSame('BE', $cart->getBillingAddress()->getCountry()->getIsoAlpha2Code());
 
         // Frozen while the payment runs.
         try {

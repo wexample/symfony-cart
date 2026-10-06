@@ -10,7 +10,7 @@ use Wexample\SymfonyCart\Enum\CartStatus;
 use Wexample\SymfonyCart\Event\CartExpiredEvent;
 use Wexample\SymfonyCart\Event\CartPaidEvent;
 use Wexample\SymfonyCart\Interface\CartItemPaidHandlerInterface;
-use Wexample\SymfonyGeo\Class\PostalAddress;
+use Wexample\SymfonyCart\Entity\CartAddress;
 use Wexample\SymfonyPayment\Entity\Payment;
 use Wexample\SymfonyPayment\Service\PaymentService;
 use Wexample\SymfonyRemotePayment\Class\PaymentInitiation;
@@ -42,8 +42,8 @@ class CartCheckoutService
     public function checkout(
         Cart $cart,
         string $method,
-        ?PostalAddress $billingAddress = null,
-        ?PostalAddress $shippingAddress = null,
+        ?CartAddress $billingAddress = null,
+        ?CartAddress $shippingAddress = null,
         ?string $returnUrl = null,
     ): ?PaymentInitiation {
         if (CartStatus::Paid === $cart->getStatus()) {
